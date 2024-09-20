@@ -82,6 +82,15 @@ const App = () => {
   const winner = calculateWinner(board);
   const nextPlayer = xIsNext ? "X" : "O";
 
+  const setBoardTile = (index) => {
+    const newBoard = board.slice();
+    newBoard[index] = nextPlayer;
+    setBoard(newBoard);
+    setXIsNext(!xIsNext);
+
+    playClickSound();
+  };
+
   useEffect(() => {
     const playWinSound = () => {
       const sound = new Howl({
@@ -93,15 +102,37 @@ const App = () => {
     winner && playWinSound(winner);
   }, [winner]);
 
+  console.log("what is next", xIsNext);
+
+  useEffect(() => {
+    async function getMove() {
+      if (xIsNext || winner) {
+        return;
+      }
+      const response = await fetch("/api/ttt", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          board,
+        }),
+      });
+      let { move } = await response.json();
+
+      // ChatGPT sometimes gives me invalid moves
+      if (board[move]) {
+        move = board.findIndex((v) => !v);
+      }
+      setBoardTile(move);
+    }
+
+    getMove();
+  }, [winner, xIsNext, board]);
+
   const handleClick = (index) => {
-    if (winner || board[index]) return;
-
-    const newBoard = board.slice();
-    newBoard[index] = nextPlayer;
-    setBoard(newBoard);
-    setXIsNext(!xIsNext);
-
-    playClickSound();
+    if (winner || board[index] || !xIsNext) return;
+    setBoardTile(index);
   };
 
   const playClickSound = () => {
@@ -129,7 +160,14 @@ const App = () => {
         </Board>
         {winner && <Overlay>Winner: {winner}</Overlay>}
       </BoardContainer>
-      <Button onClick={() => setBoard(Array(9).fill(null))}>Restart</Button>
+      <Button
+        onClick={() => {
+          setBoard(Array(9).fill(null));
+          setXIsNext(true);
+        }}
+      >
+        Restart
+      </Button>
     </div>
   );
 };

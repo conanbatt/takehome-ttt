@@ -1,10 +1,31 @@
-## Getting Started
+## TicTacToe.ai
 
-This project is based on Next.js.
+An irrepeatable implementation of TicTacToe playable at ....
 
-First, run the development server:
+// insert video preview
+
+The game is meant to be played with sound ON!
+
+### Running Locally
+
+This project is based on Next.js. Run the development server with:
 
 ```bash
 npm i
 npm run dev
 ```
+
+### Choices
+
+*Next.js vs Vite* - There aren't specific framework features used in this implementation, so any client side solutino would work. Next.js has sane defaults and its the tool I'm most used to using.
+
+*Framer Motion* - The most common framework to spruce up transitions and animations, to give the experience an extra flare.
+
+*Howler* - For Cross-browser compatible audio handling.
+
+*OpenAI* - For adversarial game play.
+
+Currently using gpt-4o-mini to select next moves. Surprisingly, chatGPT is not only a poor TTT player, but it provides invalid moves which I had to override
+to prevent the game from having issues.
+
+Please do enjoy the artisanal soundtrack!

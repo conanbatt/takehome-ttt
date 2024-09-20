@@ -12,6 +12,7 @@
     "framer-motion": "^11.5.5",
     "howler": "^2.2.4",
     "next": "14.2.12",
+    "openai": "^4.63.0",
     "react": "^18",
     "react-dom": "^18",
     "styled-components": "^6.1.13"
