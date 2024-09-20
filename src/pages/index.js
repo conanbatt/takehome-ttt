@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Howl } from "howler";
 
 const App = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -18,12 +19,14 @@ const App = () => {
     setBoard(newBoard);
     setXIsNext(!xIsNext);
 
-    playClickSound();
+    //playClickSound();
   };
 
   const playClickSound = () => {
-    const audio = new Audio("/audio/ping.m4a"); // path to the sound file in public folder
-    audio.play();
+    const sound = new Howl({
+      src: ["/audio/ping.m4a"],
+    });
+    sound.play();
   };
 
   const playEnd = (win) => {
