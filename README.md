@@ -4,7 +4,7 @@ An irrepeatable implementation of TicTacToe playable at
 
 ```https://takehome-koj0nkl5b-conanbatts-projects.vercel.app/```
 
-// insert video preview
+https://github.com/user-attachments/assets/8e378067-23c0-4bfb-aa15-db776fadd7eb
 
 The game is meant to be played with sound ON!
 
