@@ -1,6 +1,8 @@
 ## TicTacToe.ai
 
-An irrepeatable implementation of TicTacToe playable at ....
+An irrepeatable implementation of TicTacToe playable at
+
+```https://takehome-koj0nkl5b-conanbatts-projects.vercel.app/```
 
 // insert video preview
 
