@@ -21,7 +21,7 @@ npm run dev
 
 *Framer Motion* - The most common framework to spruce up transitions and animations, to give the experience an extra flare.
 
-*Howler* - For Cross-browser compatible audio handling.
+*Howler* - For Cross-browser compatible audio handling. The game has custom made sound!
 
 *OpenAI* - For adversarial game play.
 

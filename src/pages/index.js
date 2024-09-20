@@ -76,10 +76,11 @@ const BoardContainer = styled.div`
 `;
 
 const App = () => {
-  const [board, setBoard] = useState(Array(9).fill(null));
+  const [board, setBoard] = useState(Array(9).fill(""));
   const [xIsNext, setXIsNext] = useState(true);
 
   const winner = calculateWinner(board);
+  const end = board.filter((v) => !v).length === 0;
   const nextPlayer = xIsNext ? "X" : "O";
 
   const setBoardTile = (index) => {
@@ -109,6 +110,7 @@ const App = () => {
       if (xIsNext || winner) {
         return;
       }
+
       const response = await fetch("/api/ttt", {
         method: "POST",
         headers: {
@@ -122,7 +124,7 @@ const App = () => {
 
       // ChatGPT sometimes gives me invalid moves
       if (board[move]) {
-        move = board.findIndex((v) => !v);
+        move = board.findIndex((v) => v !== 0 && !v);
       }
       setBoardTile(move);
     }
@@ -142,6 +144,8 @@ const App = () => {
     sound.play();
   };
 
+  console.log("board", board);
+
   return (
     <div style={{ textAlign: "center" }}>
       <h1 style={{ fontSize: 32, marginTop: 30 }}>Tic-Tac-Toe</h1>
@@ -159,6 +163,7 @@ const App = () => {
           ))}
         </Board>
         {winner && <Overlay>Winner: {winner}</Overlay>}
+        {end && !winner && <Overlay>Tie!</Overlay>}
       </BoardContainer>
       <Button
         onClick={() => {
