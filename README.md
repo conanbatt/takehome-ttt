@@ -1,8 +1,7 @@
-## TicTacToe.ai
+## [TicTacToe.ai](https://takehome-koj0nkl5b-conanbatts-projects.vercel.app/)
 
-An irrepeatable implementation of TicTacToe playable at
+An irrepeatable implementation of TicTacToe playable at [TicTacToe.ai](https://takehome-koj0nkl5b-conanbatts-projects.vercel.app/)
 
-```https://takehome-koj0nkl5b-conanbatts-projects.vercel.app/```
 
 https://github.com/user-attachments/assets/8e378067-23c0-4bfb-aa15-db776fadd7eb
 
